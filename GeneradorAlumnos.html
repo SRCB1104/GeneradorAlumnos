@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var estudiantes = "";
+			const apellidosEspanoles = [
+  "González", "Rodríguez", "García", "Fernández", "López", "Martínez", "Sánchez", "Pérez", "Gómez", "Díaz",
+  "Torres", "Ramírez", "Ruiz", "Vargas", "Castro", "Morales", "Herrera", "Ortega", "Medina", "Flores",
+  "Romero", "Jiménez", "Moreno", "Muñoz", "Serrano", "Delgado", "Navarro", "Gutiérrez", "Cabrera", "Reyes",
+  "Ramos", "Aguilar", "Suárez", "Mendoza", "Castillo", "Arias", "Montero", "Vega", "Vázquez", "Hidalgo",
+  "Fuentes", "Cruz", "Iglesias", "Giménez", "Luna", "Hernández", "Ferrer", "Peña", "Roca", "Garrido",
+  "Cano", "Montoya", "Pascual", "Guerrero", "Peralta", "Cortés", "Navas", "Lara", "Guerra", "Solís",
+  "León", "Campos", "Cardoso", "Carmona", "Duran", "Carrasco", "Bernal", "Moya", "Soto", "Olivares",
+  "Ibáñez", "Cordero", "Vidal", "Franco", "Jurado", "Molina", "Salas", "Pizarro", "Palacios", "Ríos",
+  "Bermúdez", "Figueroa", "Aguirre", "Valencia", "Lorenzo", "Salazar", "Dominguez", "Silva", "Montes",
+  "Pacheco", "Becerra", "Hinojosa", "Toledo", "Escobar", "Valenzuela", "Zamora", "Páez", "Bravo",
+  "Calderón", "Godoy", "Valle", "Sepúlveda", "Barrios", "Villanueva", "Aguayo", "Muñiz", "Espinosa",
+  "Aranda", "Méndez", "Cuevas", "Gallardo", "Pardo", "Osorio", "Carrillo", "Lobos", "Lázaro", "Marín",
+  "Duarte", "Santos", "Trujillo", "Guzmán", "Roldán", "Bustamante", "Ochoa", "Amador", "Fajardo",
+  "Estrada", "Corona", "Orellana", "Benítez", "Castaño", "Salgado", "Pineda", "Leal", "Becerril",
+  "Valdés", "Miranda", "Osuna", "Sáenz", "Báez", "Rentería", "Jara", "Chávez", "Briones", "Gámez",
+  "Cruzado", "Tapia", "Rosales", "Téllez", "Fierro", "Galarza", "Quintero", "Abarca", "Cedillo",
+  "Becerrera", "Zúñiga", "Fraga", "Castañeda", "Requena", "Bolanos", "Zambrano", "Venegas", "Nieto",
+  "Araujo", "Carbajal", "Parra", "Palomo", "Villegas", "Sotomayor", "Casas", "Jaramillo", "Ávila",
+  "Nájera", "Villa", "Casares", "Arroyo", "Espinoza", "Meléndez", "Reyes", "Huerta", "Román",
+  "Jaime", "Hurtado", "Arce", "Hoyos", "Contreras", "Chavarría", "Zapata", "Montalvo", "Garza",
+  "De la Cruz", "Becerra", "Beltrán", "Bárcenas", "Tovar", "Saldaña", "Villalobos", "Guajardo",
+  "Quirós", "Cedillo", "Echeverría", "Baños", "Loera", "Gavilán", "Navarrete", "Peñaloza", "Valladares",
+  "Bermejo", "Velázquez", "Aldana", "Vaca", "Barba", "Cruz", "Vicente", "Calvo", "Páramo", "Castañón",
+  "Orozco", "Becerra", "Aguilera", "Zavala", "Campa", "Bravo", "Ferreira", "Gaviria", "Parada", "Toro"
+];
+			const apellidosPortugueses = [
+  "Silva", "Santos", "Ferreira", "Pereira", "Oliveira", "Costa", "Rodrigues", "Martins", "Gomes", "Almeida",
+  "Ribeiro", "Cardoso", "Cruz", "Carvalho", "Reis", "Sousa", "Fernandes", "Soares", "Pinto", "Teixeira",
+  "Mendes", "Nunes", "Vieira", "Lopes", "Marques", "Alves", "Gonçalves", "Moreira", "Esteves", "Machado",
+  "Freitas", "Araújo", "Barbosa", "Leite", "Correia", "Neves", "Pires", "Coelho", "Cunha", "Fonseca",
+  "Dias", "Rocha", "Madeira", "Batista", "Mota", "Azevedo", "Monteiro", "Figueiredo", "Fonseca", "Borges",
+  "Barros", "Magalhães", "Vaz", "Barreto", "Mesquita", "Dantas", "Saraiva", "Tavares", "Andrade", "Pacheco",
+  "Valente", "Cavaco", "Brito", "Viana", "Simões", "Veiga", "Aguiar", "Fidalgo", "Amorim", "Carmo",
+  "Campos", "Gouveia", "Sampaio", "Pinheiro", "Lima", "Tavares", "Abreu", "Teles", "Faria", "Furtado",
+  "Rosa", "Maia", "Quintana", "Peixoto", "Amaral", "Luiz", "Albuquerque", "Guimarães", "Câmara", "Terra",
+  "Pais", "Mendes", "Casado", "Peixe", "Brasil", "Santana", "Farias", "Agostinho", "Corte Real", "Vargas",
+  "Pimentel", "Godinho", "Cotta", "Baião", "Paiva", "Barca", "Alcoforado", "Rangel", "Carreiro", "Cortês",
+  "Covilhã", "Mesquita", "Sequeira", "Vasconcelos", "Leiria", "Vilar", "Vale", "Ramires", "Anjos", "Vilarinho",
+  "Santa Rosa", "Ávila", "Tavora", "Dornelas", "Sá", "Torres", "Póvoas", "Villas Boas", "Jordão", "Ventura"
+];
+			
+			function generarNombreCompleto() {
+				var nombre = generarNombre();
+				var apellido = generarApellido();
+				var nombreCompleto = nombre + " " + apellido;
+				return nombreCompleto;
+			}
+			
+			function generarNombre() {
+				var nombres = ["Juan", "María", "Carlos", "Ana", "Pedro", "Laura", "José", "Marta", "Luis", "Elena"];
+				var indice = Math.floor(Math.random() * nombres.length);
+				return nombres[indice];
+			}
+			
+			function generarApellido() {
+				var apellido;
+				if (Math.random() < 0.5) {
+					apellido = apellidosEspanoles[Math.floor(Math.random() * apellidosEspanoles.length)];
+				} else {
+					apellido = apellidosPortugueses[Math.floor(Math.random() * apellidosPortugueses.length)];
+				}
+				return apellido;
+			}
+			
+			function generarEstudiantes() {
+				var cantidad = document.getElementById("cantidadEstudiantes").value;
+				var listaEstudiantes = "";
+				for (var i = 0; i < cantidad; i++) {
+					var nombreCompleto = generarNombreCompleto();
+					listaEstudiantes += nombreCompleto + "<br>";
+				}
+				document.getElementById("estudiantes").innerHTML = listaEstudiantes;
+			}
+		</script>
+	</head>
+	<body>
+		<label for="cantidadEstudiantes">Cantidad de Estudiantes:</label>
+		<input type="number" id="cantidadEstudiantes" name="cantidadEstudiantes" min="1" max="100">
+		<button onclick="generarEstudiantes()">Generar Estudiantes</button>
+		<p id="estudiantes"></p>
+	</body>
+</html>
