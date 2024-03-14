@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<script>
-			var estudiantes = "";
-			const apellidosEspanoles = [
+			var alumnos = "";
+			const apellidosEspanioles = [
   "González", "Rodríguez", "García", "Fernández", "López", "Martínez", "Sánchez", "Pérez", "Gómez", "Díaz",
   "Torres", "Ramírez", "Ruiz", "Vargas", "Castro", "Morales", "Herrera", "Ortega", "Medina", "Flores",
   "Romero", "Jiménez", "Moreno", "Muñoz", "Serrano", "Delgado", "Navarro", "Gutiérrez", "Cabrera", "Reyes",
@@ -37,52 +37,201 @@
   "Dias", "Rocha", "Madeira", "Batista", "Mota", "Azevedo", "Monteiro", "Figueiredo", "Fonseca", "Borges",
   "Barros", "Magalhães", "Vaz", "Barreto", "Mesquita", "Dantas", "Saraiva", "Tavares", "Andrade", "Pacheco",
   "Valente", "Cavaco", "Brito", "Viana", "Simões", "Veiga", "Aguiar", "Fidalgo", "Amorim", "Carmo",
-  "Campos", "Gouveia", "Sampaio", "Pinheiro", "Lima", "Tavares", "Abreu", "Teles", "Faria", "Furtado",
-  "Rosa", "Maia", "Quintana", "Peixoto", "Amaral", "Luiz", "Albuquerque", "Guimarães", "Câmara", "Terra",
-  "Pais", "Mendes", "Casado", "Peixe", "Brasil", "Santana", "Farias", "Agostinho", "Corte Real", "Vargas",
-  "Pimentel", "Godinho", "Cotta", "Baião", "Paiva", "Barca", "Alcoforado", "Rangel", "Carreiro", "Cortês",
-  "Covilhã", "Mesquita", "Sequeira", "Vasconcelos", "Leiria", "Vilar", "Vale", "Ramires", "Anjos", "Vilarinho",
-  "Santa Rosa", "Ávila", "Tavora", "Dornelas", "Sá", "Torres", "Póvoas", "Villas Boas", "Jordão", "Ventura"
+  "Campos", "Gouveia", "Sampaio", "Pinheiro", "Lima", "Tavares", "Abreu", "Teles", "Faria", "Maia",
+  "Pestana", "Branco", "Carrasco", "Serra", "Fraga", "Moura", "Melo", "Salgado", "Couto", "Guedes",
+  "Correia", "Raposo", "Quintana", "Câmara", "Baptista", "Menezes", "Lourenço", "Diniz", "Veiga", "Goulart",
+  "Figueira", "Caldas", "Corte-Real", "Nobre", "Medina", "Sousa", "Mira", "Paiva", "Costa", "Rico",
+  "Ferreira", "Cabral", "Simão", "Amado", "Pereira", "Bentes", "Veiga", "Coimbra", "Costa", "Borges",
+  "Cavaco", "Teixeira", "Pinto", "Figueiredo", "Ferreira", "Garcia", "Vaz", "Mendonça", "Oliveira", "Cabral",
+  "Matos", "Tavares", "Magalhães", "Cardoso", "Lima", "Vicente", "Abreu", "Mendes", "Câmara", "Lopes",
+  "Ferreira", "Nunes", "Gomes", "Machado", "Vale", "Cunha", "Silveira", "Simões", "Lopes", "Correia",
+  "Carvalho", "Rodrigues", "Soares", "Barbosa", "Martins", "Pereira", "Dias", "Monteiro", "Araújo", "Reis",
+  "Ribeiro", "Santos", "Oliveira", "Silva", "Costa", "Gonçalves", "Fernandes", "Cruz", "Pinto", "Martins", "Schmidt", "Müller", "Schneider", "Fischer", "Weber", "Schulz", "Wagner", "Becker", "Hoffmann", "Schäfer",
+  "Koch", "Bauer", "Richter", "Klein", "Wolf", "Schröder", "Neumann", "Schwarz", "Zimmermann", "Braun",
+  "Krüger", "Hartmann", "Lange", "Schmitt", "Werner", "Schmitz", "Krause", "Meier", "Lehmann", "Maier"
 ];
-			
-			function generarNombreCompleto() {
-				var nombre = generarNombre();
-				var apellido = generarApellido();
-				var nombreCompleto = nombre + " " + apellido;
-				return nombreCompleto;
+const nombres = [
+  "Léa", "Lucas", "Manon", "Louis", "Chloé", "Théo", "Emma", "Hugo", "Camille", "Enzo",
+  "Inès", "Nathan", "Sarah", "Mathis", "Clara", "Tom", "Jade", "Gabriel", "Maëlys", "Romain",
+  "Lola", "Ethan", "Louna", "Noah", "Eva", "Maxime", "Léna", "Antoine", "Zoé", "Alexandre",
+  "Mia", "Paul", "Lisa", "Axel", "Manon", "Evan", "Léna", "Jules", "Julia", "Raphaël",
+  "Léna", "Arthur", "Louise", "Baptiste", "Romane", "Nolan", "Margaux", "Maël", "Ava", "Matéo",
+  "Charlotte", "Lucas", "Juliette", "Mathéo", "Romane", "Nathan", "Léa", "Evan", "Louise", "Noé",
+  "Lou", "Alexandre", "Sofia", "Enzo", "Léna", "Thomas", "Eva", "Léo", "Mila", "Lucas",
+  "Lola", "Adam", "Zoé", "Louis", "Ambre", "Raphaël", "Anna", "Gabriel", "Juliette", "Ethan",
+  "Romane", "Tom", "Alice", "Hugo", "Léa", "Noah", "Chloé", "Liam", "Léa", "Nina", "Matteo",
+  "Eva", "Axel", "Manon", "Jules", "Lilou", "Lucas", "Maëlys", "Nathan", "Zoé", "Clément",
+  "Ambre", "Arthur", "Lina", "Théo", "Jade", "Noah", "Louise", "Ethan", "Léa", "Romain",
+  "Léna", "Julien", "Lola", "Maxime", "Emma", "Enzo", "Mia", "Lucas", "Chloé", "Evan", "Haruto", "Yua", "Sota", "Rio", "Yui", "Sora", "Hina", "Ren", "Mao", "Riku",
+  "Hikari", "Kaito", "Riko", "Kota", "Yuna", "Toma", "Karin", "Minato", "Akari", "Hayato",
+  "Yuzu", "Kakeru", "Nene", "Daiki", "Mei", "Koki", "Hana", "Ryota", "Aoi", "Shoma",
+  "Arisa", "Yuuma", "Nana", "Kazuki", "Mana", "Takumi", "Misaki", "Yuto", "Miyu", "Ryota",
+  "Yurika", "Tatsuki", "Sakura", "Takeru", "Rin", "Yuki", "Asahi", "Kanon", "Kenta", "Yumeko",
+  "Tohru", "Rinako", "Rikuto", "Miku", "Kazuko", "Hiroto", "Aiko", "Renka", "Kouki", "Yuko",
+  "Shogo", "Mai", "Toshiro", "Nao", "Yusuke", "Ami", "Kazumi", "Satoshi", "Ayaka", "Kouki",
+  "Yuki", "Hinata", "Minori", "Riku", "Emi", "Rui", "Sakiko", "Tsubasa", "Kumiko", "Hiroki",
+  "Saki", "Tatsuya", "Kaho", "Ren", "Natsuki", "Kenshin", "Asuka", "Issei", "Kanna", "Yuki",
+  "Ryoko", "Hayate", "Mizuki", "Yuma", "Haruka", "Kazuma", "Sayuri", "Naoya", "Hikaru", "Akane"
+];
+			const nombres2 = [
+  "Thabo", "Lebohang", "Khanya", "Sipho", "Naledi", "Mandla", "Lerato", "Lungile", "Bontle", "Kagiso",
+  "Nomvula", "Mpho", "Sibusiso", "Refiloe", "Kabelo", "Amahle", "Onke", "Thandiwe", "Simphiwe", "Siyabonga",
+  "Anele", "Noluthando", "Nkosinathi", "Zanele", "Lethabo", "Thandeka", "Katlego", "Kgothatso", "Lethabo", "Ntombi",
+  "Themba", "Mapule", "Keabetswe", "Banele", "Mosa", "Gugulethu", "Ayanda", "Sizwe", "Hlompho", "Buhle",
+  "Thulani", "Nokwanda", "Thabiso", "Palesa", "Xolani", "Nandi", "Vuyo", "Mmabatho", "Oupa", "Thokozani",
+  "Zandile", "Mokgadi", "Mohau", "Njabulo", "Nonhlanhla", "Sindiswa", "Fumani", "Lehlohonolo", "Tumelo", "Tshepo",
+  "Lehasa", "Kgotso", "Mphoentle", "Motlatsi", "Gontse", "Thabo", "Ntsika", "Zinhle", "Bafana", "Malebo",
+  "Nobuhle", "Modiehi", "Kopano", "Lebogang", "Mthunzi", "Nokulunga", "Leleti", "Lindiwe", "Mokete", "Motheo",
+  "Mosima", "Nhlanhla", "Puseletso", "Samkelo", "Sithembiso", "Tshiamo", "Vangile", "Wandile", "Zenande", "Zuko",
+  "Kamogelo", "Lesedi", "Otsile", "Segomotso", "Tshegofatso", "Thuso", "Unity", "Yonela", "Zakithi", "Zolani", "Amunet", "Osiris", "Nefertari", "Ramsés", "Cleopatra", "Khufu", "Hatshepsut", "Thutmose", "Nefertiti", "Anubis",
+  "Akhenaten", "Isis", "Seti", "Sekhmet", "Amenhotep", "Sobek", "Bastet", "Ptah", "Khafre", "Horus",
+  "Imhotep", "Maat", "Tutankamón", "Neferhotep", "Mut", "Khepri", "Sphinx", "Nekhbet", "Khonsu", "Bak",
+  "Menes", "Buto", "Shai", "Babi", "Hathor", "Wadjet", "Neith", "Seth", "Khenti-Amentiu", "Taweret",
+  "Karnak", "Mutnofret", "Nakht", "Iput", "Sekhemib", "Meret", "Anqet", "Khnum", "Ahmose", "Seneferu",
+  "Tefnut", "Shu", "Neferu", "Seshat", "Geb", "Nut", "Aahotep", "Neferure", "Sati", "Tiy",
+  "Renenutet", "Keket", "Shesmu", "Apep", "Hapi", "Ihy", "Khensit", "Merit", "Ninurtu", "Tayuun",
+  "Amsi", "Ghada", "Khefri", "Mehet", "Thoyet", "Khensit", "Taweret", "Meretseger", "Nub", "Tasenetnofret",
+  "Inka", "Afra", "Asim", "Hapi", "Mehen", "Ra", "Aten", "Knumu", "Kara", "Wahibre",
+  "Rennefer", "Rat", "Nebet", "Meri", "Hotep", "Eset", "Inheret", "Geb", "Horus", "Auset",
+  "Atemu", "Kep", "Shentayet", "Ptahhotep", "Nekhebet", "Kauket", "Baset", "Yuya", "Tiye", "Thuya"
+];
+function generar() {
+    var opcion = document.getElementById("opcion").value;
+    var num = parseInt(document.getElementById("num").value);
+    if (num < 1) {
+        num = 5;
+        document.getElementById("num").value = 5;
+    }
+    if (opcion == "sql") {
+        var alumnosSQL = "";
+        var matricula = 222217412;
+        for (let i = 1; i < (num + 1); i++) {
+            alumnosSQL += "INSERT INTO alumnos (Expediente, Apellido1, Apellido2, Nombre, Correo_ins) VALUES (" +
+                matricula + ", '" +
+                apellidosEspanoles[Math.floor(Math.random() * 199)] + "', '" +
+                apellidosPortugueses[Math.floor(Math.random() * 199)] + "', '" +
+                nombres[Math.floor(Math.random() * 220)] + " " +
+                nombres2[Math.floor(Math.random() * 209)] + "', '" +
+                (matricula++) + "@universidad.mx');\n";
+        }
+        document.getElementById("salida").innerText = alumnosSQL;
+    } else if (opcion == "csv") {
+        var alumnos = "Expediente,Apellido1,Apellido2,Nombre,Correo_ins\n";
+        var matricula = 222217412;
+        for (let i = 1; i < (num + 1); i++) {
+            alumnos += (matricula) + "," +
+                (apellidosEspanoles[Math.floor(Math.random() * 199)]) + "," +
+                (apellidosPortugueses[Math.floor(Math.random() * 199)]) + "," +
+                (nombres[Math.floor(Math.random() * 220)]) + " " +
+                (nombres2[Math.floor(Math.random() * 209)]) + "," +
+                (matricula++) + "@universidad.mx";
+            if (i !== num) {
+                alumnos += "\n";
+            }
+        }
+        document.getElementById("salida").innerText = alumnos;
+    } else if (opcion == "json") {
+        var alumnosArray = [];
+        var matricula = 222217412;
+        for (let i = 1; i < (num + 1); i++) {
+            var alumno = {
+                Expediente: matricula,
+                Apellido1: apellidosEspanoles[Math.floor(Math.random() * 199)],
+                Apellido2: apellidosPortugueses[Math.floor(Math.random() * 199)],
+                Nombre: nombres[Math.floor(Math.random() * 220)] + " " + nombres2[Math.floor(Math.random() * 209)],
+                Correo_ins: matricula++ + "@universidad.mx"
+            };
+            alumnosArray.push(alumno);
+        }
+        document.getElementById("salida").innerText = JSON.stringify(alumnosArray, null, 2);
+    }
+}
+
+			function generarSQL(){
+			var opcion = document.getElementById("opcion").value;
+    			var extension = "";
+    			if (opcion == "txt") {
+      				extension = ".sql";
+    			} else if (opcion == "csv"){
+      				extension = ".csv";
+    			} else if (opcion == "json"){
+      				extension = ".json";
+    			}
+			  var archivo = document.createElement('a');
+    		var salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+        if (salida == ""){
+            generar();
+            salida = alumnos.replace(/<br>/g, '\n').replace(/&emsp;/g, '\t').trim();
+        }
+    		archivo.setAttribute('href', 'data:text/plane;charset=utf-8,'+ encodeURIComponent(salida));
+    		archivo.setAttribute('download', "universidad.sql");
+    		archivo.style.display = 'none';
+    		document.body.appendChild(archivo);
+    		archivo.click();
+    		document.body.removeChild(archivo);
 			}
-			
-			function generarNombre() {
-				var nombres = ["Juan", "María", "Carlos", "Ana", "Pedro", "Laura", "José", "Marta", "Luis", "Elena"];
-				var indice = Math.floor(Math.random() * nombres.length);
-				return nombres[indice];
-			}
-			
-			function generarApellido() {
-				var apellido;
-				if (Math.random() < 0.5) {
-					apellido = apellidosEspanoles[Math.floor(Math.random() * apellidosEspanoles.length)];
-				} else {
-					apellido = apellidosPortugueses[Math.floor(Math.random() * apellidosPortugueses.length)];
-				}
-				return apellido;
-			}
-			
-			function generarEstudiantes() {
-				var cantidad = document.getElementById("cantidadEstudiantes").value;
-				var listaEstudiantes = "";
-				for (var i = 0; i < cantidad; i++) {
-					var nombreCompleto = generarNombreCompleto();
-					listaEstudiantes += nombreCompleto + "<br>";
-				}
-				document.getElementById("estudiantes").innerHTML = listaEstudiantes;
-			}
+
+            function generarJSON() {
+    var opcion = document.getElementById("opcion").value;
+    var num = parseInt(document.getElementById("num").value);
+    var alumnosArray = [];
+    var matricula = 222217412;
+    for (let i = 1; i < (num + 1); i++) {
+        var alumno = {
+            Expediente: matricula,
+            Apellido1: apellidosEspanoles[Math.floor(Math.random() * 199)],
+            Apellido2: apellidosPortugueses[Math.floor(Math.random() * 199)],
+            Nombre: nombres[Math.floor(Math.random() * 220)] + " " + nombres2[Math.floor(Math.random() * 209)],
+            Correo_ins: matricula++ + "@universidad.mx"
+        };
+        alumnosArray.push(alumno);
+    }
+    var alumnosJSON = JSON.stringify(alumnosArray, null, 2);
+    descargarArchivo(alumnosJSON, "universidad.json");
+}
+
+function generarCSV() {
+    var opcion = document.getElementById("opcion").value;
+    var num = parseInt(document.getElementById("num").value);
+    var alumnosCSV = "Expediente,Apellido1,Apellido2,Nombre,Correo_ins\n";
+    var matricula = 222217412;
+    for (let i = 1; i < (num + 1); i++) {
+        alumnosCSV += (matricula) + "," +
+            (apellidosEspanoles[Math.floor(Math.random() * 199)]) + "," +
+            (apellidosPortugueses[Math.floor(Math.random() * 199)]) + "," +
+            (nombres[Math.floor(Math.random() * 220)]) + " " +
+            (nombres2[Math.floor(Math.random() * 209)]) + "," +
+            (matricula++) + "@universidad.mx";
+        if (i !== num) {
+            alumnosCSV += "\n";
+        }
+    }
+    descargarArchivo(alumnosCSV, "universidad.csv");
+}
+
+function descargarArchivo(data, filename) {
+    var archivo = document.createElement('a');
+    archivo.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+    archivo.setAttribute('download', filename);
+    archivo.style.display = 'none';
+    document.body.appendChild(archivo);
+    archivo.click();
+    document.body.removeChild(archivo);
+}
+
 		</script>
 	</head>
 	<body>
-		<label for="cantidadEstudiantes">Cantidad de Estudiantes:</label>
-		<input type="number" id="cantidadEstudiantes" name="cantidadEstudiantes" min="1" max="100">
-		<button onclick="generarEstudiantes()">Generar Estudiantes</button>
-		<p id="estudiantes"></p>
+		<input type="button" value="Generar alumnos" onclick="generar()">
+<input type="button" value="Generar SQL" onclick="generarSQL()">
+<input type="button" value="Generar JSON" onclick="generarJSON()">
+<input type="button" value="Generar CSV" onclick="generarCSV()">
+<input type="number" id="num" placeholder="Numero de entradas" value="5">
+<select id="opcion" name="opcion">
+    <option value="sql">SQL</option>
+    <option value="csv">CSV</option>
+    <option value="json">JSON</option>
+</select>
+<p id="salida"></p>
 	</body>
 </html>
